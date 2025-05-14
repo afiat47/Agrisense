@@ -2,7 +2,7 @@
 
 AgriSense is a lightweight web application that allows users to upload plant leaf images and get real-time predictions of potential diseases using a deep learning model.
 
-![AgriSense UI](/mnt/images/front.PNG) <!-- Optional: include UI screenshot -->
+![AgriSense UI](./images/front.PNG) <!-- Optional: include UI screenshot -->
 
 ---
 
@@ -18,7 +18,7 @@ AgriSense is a lightweight web application that allows users to upload plant lea
 
 ## 🏗️ System Architecture
 
-![System Architecture](/mnt/images/system.PNG)
+![System Architecture](./images/system.PNG)
 
 ---
 
@@ -81,13 +81,13 @@ agrisense/
 
 ## 💼 Model Accuracy
 
-![Model Accuracy](/mnt/images/accuracy.PNG)
+![Model Accuracy](./images/accuracy.PNG)
 
 ---
 
 ## 🖼️ Example Prediction Output
 
-![Prediction Result](/mnt/images/second.PNG)
+![Prediction Result](./images/second.PNG)
 
 
 ---
