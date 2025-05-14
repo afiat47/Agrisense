@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriSense</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    h1 {
+      color: #00aaff;
+      font-size: 48px;
+      margin-bottom: 40px;
+    }
+
+    .upload-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .upload-box {
+      background-color: #a2dff0;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .upload-box input[type="file"] {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .upload-box::before {
+      content: '+';
+      font-size: 100px;
+      color: white;
+    }
+
+    .upload-text {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    #spinner {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>AgriSense</h1>
+  <div class="upload-container">
+    <label class="upload-box">
+      <input type="file" accept="image/*" onchange="handleUpload(event)">
+    </label>
+    <div class="upload-text">Upload an Image</div>
+    <div id="spinner">Processing... Please wait</div>
+  </div>
+
+ <script>
+  function handleUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    // Show loading spinner
+    document.getElementById('spinner').style.display = 'block';
+
+    // Prepare form data
+    const formData = new FormData();
+    formData.append("image", file);
+
+    // Send POST request to Flask server (adjust URL if needed)
+    fetch("http://127.0.0.1:5000/predict", {
+      method: "POST",
+      body: formData,
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Read uploaded image as base64 to store in localStorage
+        const reader = new FileReader();
+        reader.onload = function () {
+          localStorage.setItem('image', reader.result);
+          localStorage.setItem('prediction', data.prediction);
+          window.location.href = 'result.html';
+        };
+        reader.readAsDataURL(file);
+      })
+      .catch(error => {
+        // Handle failure
+        document.getElementById('spinner').style.display = 'none';
+        alert("Prediction failed. See console for details.");
+        console.error("Error:", error);
+      });
+  }
+</script>
+
+
+</body>
+</html>

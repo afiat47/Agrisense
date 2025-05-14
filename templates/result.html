@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction Result</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    h1 {
+      color: #00aaff;
+      font-size: 48px;
+      margin-bottom: 40px;
+    }
+
+    .result-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .result-container img {
+      width: 250px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .prediction-text {
+      font-size: 24px;
+      text-align: left;
+    }
+
+    .prediction-text strong {
+      font-size: 28px;
+    }
+
+    .prediction-text span {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>AgriSense</h1>
+  <div class="result-container">
+    <img id="preview" alt="Uploaded Leaf Image">
+    <div class="prediction-text">
+      <strong>Disease Name:</strong><br>
+      <span id="prediction"></span>
+    </div>
+  </div>
+
+  <script>
+    const image = localStorage.getItem('image');
+    const prediction = localStorage.getItem('prediction');
+    
+    if (image && prediction) {
+      document.getElementById('preview').src = image;
+      document.getElementById('prediction').textContent = prediction;
+    } else {
+      document.body.innerHTML = '<h2>No prediction data found. Please upload an image first.</h2>';
+    }
+  </script>
+</body>
+</html>
