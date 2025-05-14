@@ -18,7 +18,7 @@ AgriSense is a lightweight web application that allows users to upload plant lea
 
 ## 🏗️ System Architecture
 
-![System Architecture](./images/system.PNG)
+![System Architecture](./images/system.png)
 
 ---
 
