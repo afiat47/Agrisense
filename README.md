@@ -18,7 +18,7 @@ AgriSense is a lightweight web application that allows users to upload plant lea
 
 ## 🏗️ System Architecture
 
-!\[System Architecture]\(/mnt/images/system.png)
+![System Architecture](/mnt/images/system.PNG)
 
 ---
 
@@ -81,7 +81,7 @@ agrisense/
 
 ## 💼 Model Accuracy
 
-!\[Model Accuracy]\(/mnt/images/accuracy.PNG)
+![Model Accuracy](/mnt/images/accuracy.PNG)
 
 ---
 
